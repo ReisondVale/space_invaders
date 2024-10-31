@@ -42,5 +42,11 @@ while running:
                 coordinate_x_change = 0
 
     coordinate_x += coordinate_x_change
+
+    if coordinate_x <= 0:
+        coordinate_x = 0
+    elif coordinate_x >= 736:
+        coordinate_x = 736
+
     player(coordinate_x, coordinate_y)
     pygame.display.update()
