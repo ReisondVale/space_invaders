@@ -22,7 +22,8 @@ player_coordinate_x_change = 0
 enemy_image = pygame.image.load('enemy.png')
 enemy_coordinate_x = random.randint(0, 800)
 enemy_coordinate_y = random.randint(50, 150)
-enemy_coordinate_x_change = 0
+enemy_coordinate_x_change = 0.3
+enemy_coordinate_y_change = 40
 
 
 def player(x, y):
@@ -57,6 +58,15 @@ while running:
         player_coordinate_x = 0
     elif player_coordinate_x >= 736:
         player_coordinate_x = 736
+
+    enemy_coordinate_x += enemy_coordinate_x_change
+
+    if enemy_coordinate_x <= 0:
+        enemy_coordinate_x_change = 0.3
+        enemy_coordinate_y += enemy_coordinate_y_change
+    elif enemy_coordinate_x >= 736:
+        enemy_coordinate_x_change = -0.3
+        enemy_coordinate_y += enemy_coordinate_y_change
 
     player(player_coordinate_x, player_coordinate_y)
     enemy(enemy_coordinate_x, enemy_coordinate_y)
